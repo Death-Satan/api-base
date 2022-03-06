@@ -97,7 +97,7 @@ class Request
     {
         $option['query'] = $params;
         [$uri,$option] = $this->withRequest(__FUNCTION__,$uri,$option);
-        return $this->withResponse($this->client->get($uri,$option));
+        return $this->withResponse($this->getClient()->get($uri,$option));
     }
 
     /**
@@ -112,7 +112,7 @@ class Request
         $option['json'] = $params;
         [$uri,$option] = $this->withRequest(__FUNCTION__,$uri,$option);
         return $this->withResponse(
-            $this->client->request('POST',$uri,$option)
+            $this->getClient()->request('POST',$uri,$option)
         );
     }
 
@@ -126,7 +126,7 @@ class Request
     {
         $option['form_params'] = $params;
         [$uri,$option] = $this->withRequest(__FUNCTION__,$uri,$option);
-        return $this->withResponse($this->client->post($uri,$option));
+        return $this->withResponse($this->getClient()->post($uri,$option));
     }
 
     /**

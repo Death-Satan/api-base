@@ -77,4 +77,17 @@ class Response
         }
         return $arr;
     }
+    protected $namespace = '\\DeathSatan\\ApiBase\\To\\';
+
+    public function __call($name, $arguments)
+    {
+        $class_sub =  substr($name,0,2);
+        if ($class_sub==='to'){
+            $class = $this->namespace.$name;
+            if (class_exists($class_sub)){
+                return (new $class($this->response))->result();
+            }
+        }
+
+    }
 }
